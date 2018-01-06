@@ -23,8 +23,7 @@ InsightUI.prototype.start = function(callback) {
   pkg.insightConfig.routePrefix = self.routePrefix;
 
   fs.writeFileSync(__dirname + '/../package.json', JSON.stringify(pkg, null, 2));
-  exec('cd ' + __dirname + '/../;' +
-    ' npm run install-and-build', function(err) {
+  exec('npm run install-and-build --prefix ' + __dirname + '/../', function(err) {
     if (err) {
       return callback(err);
     }
